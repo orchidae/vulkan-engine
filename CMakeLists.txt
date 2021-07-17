@@ -6,6 +6,17 @@ set(CMAKE_CXX_STANDARD 20)
 # Vulkan
 find_package(Vulkan REQUIRED)
 
-add_executable(vulkan-engine main.cpp)
+# GLFW
+set(GLFW_BUILD_DOCS OFF)
+set(GLFW_BUILD_TESTS OFF)
+set(GLFW_BUILD_EXAMPLES OFF)
+add_subdirectory(lib/glfw)
+include_directories(/lib/glfw/include)
 
-target_link_libraries(vulkan-engine PRIVATE Vulkan::Vulkan)
+# GLM
+include_directories(lib/glm)
+
+add_executable(vulkan-engine src/main.cpp src/vk/instance.cpp src/vk/instance.h
+        src/window.cpp src/window.h src/vk/engine.cpp src/vk/engine.h src/vk/debug.h)
+
+target_link_libraries(vulkan-engine PRIVATE Vulkan::Vulkan glfw)
