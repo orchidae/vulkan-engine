@@ -30,9 +30,9 @@ void DestroyDebugUtilsMessengerEXT(
 
 VKAPI_ATTR VkBool32 VKAPI_CALL debugUtilsMessengerCallback(
     VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-    VkDebugUtilsMessageTypeFlagsEXT /* messageTypes */,
+    VkDebugUtilsMessageTypeFlagsEXT,
     const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
-    void* /* pUserData */) {
+    void*) {
     if (messageSeverity == VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT) {
         std::cerr << pCallbackData->pMessage << std::endl;
     } else {

@@ -15,8 +15,7 @@ Window::Window() {
     window = glfwCreateWindow(windowWidth, windowHeight, "Vulkan Engine", nullptr, nullptr);
 
     uint32_t glfwExtensionCount = 0;
-    const char** glfwExtensions;
-    glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
+    const char** glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
     engine = new vk::Engine(glfwExtensionCount, glfwExtensions);
 }

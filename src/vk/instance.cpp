@@ -66,10 +66,10 @@ std::vector<VkPhysicalDevice> vk::Instance::getPhysicalDevices() {
     if (result != VK_SUCCESS) {
         return {};
     }
-    std::vector<VkPhysicalDevice> physicalDevices;
+    std::vector<VkPhysicalDevice> physicalDevices(count);
     result = vkEnumeratePhysicalDevices(handle, &count, physicalDevices.data());
     if (result != VK_SUCCESS) {
         return {};
     }
-//    return physicalDevices;
+    return physicalDevices;
 }
