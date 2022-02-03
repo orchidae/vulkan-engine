@@ -4,7 +4,8 @@ project(vulkan-engine)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(vulkan-engine src/main.cpp src/vk/instance.cpp src/vk/instance.h
-        src/window.cpp src/window.h src/vk/engine.cpp src/vk/engine.h src/vk/debug.h)
+        src/window.cpp src/window.h src/vk/engine.cpp src/vk/engine.h src/vk/debug.h
+        src/vk/physical_device.cpp src/vk/physical_device.h)
 
 # Vulkan
 find_package(Vulkan REQUIRED)

@@ -60,7 +60,7 @@ vk::Instance::~Instance() {
     vkDestroyInstance(handle, nullptr);
 }
 
-std::vector<VkPhysicalDevice> vk::Instance::getPhysicalDevices() {
+std::vector<vk::PhysicalDevice> vk::Instance::getPhysicalDevices() {
     uint32_t count = 0;
     VkResult result = vkEnumeratePhysicalDevices(handle, &count, nullptr);
     if (result != VK_SUCCESS) {
@@ -71,5 +71,10 @@ std::vector<VkPhysicalDevice> vk::Instance::getPhysicalDevices() {
     if (result != VK_SUCCESS) {
         return {};
     }
-    return physicalDevices;
+    std::vector<vk::PhysicalDevice> devices;
+    devices.reserve(physicalDevices.size());
+    for (const auto& device : physicalDevices) {
+        devices.emplace_back(device);
+    }
+    return devices;
 }
